@@ -17,8 +17,8 @@ if mode == "Upload":
     content_file = st.sidebar.file_uploader("Upload Content Image", type=["jpg", "png"])
     style_file = st.sidebar.file_uploader("Upload Style Image", type=["jpg", "png"])
 else:
-    content_path = f"Image/{st.sidebar.selectbox('Select Content Image', content_examples)}"
-    style_path = f"Image/{st.sidebar.selectbox('Select Style Image', style_examples)}"
+    content_path = f"Images/{st.sidebar.selectbox('Select Content Image', content_examples)}"
+    style_path = f"Images/{st.sidebar.selectbox('Select Style Image', style_examples)}"
 
     content_file = open(content_path, 'rb')
     style_file = open(style_path, 'rb')
@@ -39,10 +39,10 @@ if content_file and style_file:
     img_cols = st.columns(2)
     with img_cols[0]:
         st.subheader("Content Image")
-        st.image(content_image, use_column_width=True)
+        st.image(content_image, use_container_width=True)
     with img_cols[1]:
         st.subheader("Style Image")
-        st.image(style_image, use_column_width=True)
+        st.image(style_image, use_container_width=True)
 
     if st.button("Apply Style Transfer"):
         with st.spinner("Transforming..."):
